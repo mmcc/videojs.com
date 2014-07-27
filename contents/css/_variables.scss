@@ -1,0 +1,16 @@
+/*
+  Base Colors
+  We'll use these to construct other elements of the design. For the basic layout,
+  these colors will rarely be used directly.
+*/
+
+$blue: #70A7CA;
+$gray: #AAAAAA;
+
+
+
+/* Navigation */
+$nav-normal: $gray;
+$nav-active: $blue;
+
+$nav-normal-hover: darken($gray, 20%);

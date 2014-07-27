@@ -1,0 +1,26 @@
+.nav {
+  @include outer-container;
+
+  font-family: $raleway;
+  font-size: 1.2em;
+
+  text-align: center;
+
+  li {
+    display: inline-block;
+    margin-right: 5%;
+  }
+
+  a {
+    text-decoration: none;
+    color: $nav-normal;
+
+    &:visited { color: $nav-normal; }
+    &:hover { color: $nav-normal-hover; }
+  }
+
+  li.active {
+    border-bottom: 1px solid $nav-active;
+    a { color: $nav-active; }
+  }
+}

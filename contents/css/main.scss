@@ -1,0 +1,12 @@
+@import "vendor/bourbon/bourbon";
+@import "vendor/neat/neat";
+
+@import "variables";
+@import "typography";
+
+@import "sections/nav";
+@import "sections/main";
+
+body {
+  background-color: #fff;
+}
