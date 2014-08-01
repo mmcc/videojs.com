@@ -3,10 +3,8 @@
 
 @import "variables";
 @import "typography";
+@import "layout";
 
+@import "sections/base";
 @import "sections/nav";
-@import "sections/main";
-
-body {
-  background-color: #fff;
-}
+@import "sections/home";

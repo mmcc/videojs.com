@@ -1,6 +1,4 @@
 .nav {
-  @include outer-container;
-
   font-family: $raleway;
   font-size: 1.2em;
 
@@ -8,7 +6,9 @@
 
   li {
     display: inline-block;
-    margin-right: 5%;
+    margin-right: 3%;
+
+    &:last-child { margin-right: 0; }
   }
 
   a {
