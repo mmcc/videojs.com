@@ -9,6 +9,7 @@
   "plugins": [
     "wintersmith-coffee/plugin.coffee",
     "wintersmith-node-sass",
-    "wintersmith-handlebars"
+    "wintersmith-handlebars",
+    "wintersmith-browserify"
   ]
 }

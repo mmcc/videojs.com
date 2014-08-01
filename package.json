@@ -21,11 +21,14 @@
     "node-bourbon": "^1.2.3",
     "node-neat": "^1.3.0",
     "wintersmith": "^2.1.0",
+    "wintersmith-browserify": "^0.3.0",
     "wintersmith-coffee": "^0.2.1",
     "wintersmith-handlebars": "0.0.6",
     "wintersmith-node-sass": "^0.2.1"
   },
   "dependencies": {
-    "video.js": ">4.0.0"
+    "jquery": "^2.1.1",
+    "video.js": ">4.0.0",
+    "scrollmagic": "*"
   }
 }
