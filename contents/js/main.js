@@ -1,8 +1,10 @@
 var $ = require('jquery');
-var ScrollMagic = require('scrollmagic')($);
+var SM = require('scrollmagic')($, true);
 
-var controller = new ScrollMagic();
+var controller = new SM();
 
-// var scene = new ScrollScene({triggerElement: ".video-preview", duration: 300})
-// 						      .setPin("#example")
-// 						      .addTo(controller);
+var scene = new ScrollScene({triggerElement: ".video-preview", triggerHook: 0})
+                  .setPin(".video-preview")
+                  .addTo(controller);
+
+scene.addIndicators();
