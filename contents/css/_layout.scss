@@ -15,12 +15,14 @@ html, body { height: 100%; }
 
 .sections {
   @include grid-column(6);
-
   height: 100%;
+  position: relative;
 
   section {
     height: 100%;
     display: table;
+    position: relative;
+    width: 100%;
   }
 }
 
@@ -35,4 +37,13 @@ html, body { height: 100%; }
 .content {
   display: table-cell;
   vertical-align: middle;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.users {
+  @include grid-row();
+
+  height: 100%;
 }

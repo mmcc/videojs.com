@@ -1,17 +1,18 @@
-.home-nav {
+.primary-nav {
   font-family: $raleway;
   font-size: 1.2em;
   text-align: center;
-  width: 100%;
-  @include background(linear-gradient(rgba($bg, 0.98) 70%, transparent) center repeat);
+  padding: 10px 0;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  border-bottom: 1px solid $gray;
 
   ul {
     margin: 0;
-    padding: 10px 0;
-    margin-bottom: 10px;
+    padding: 0;
     line-height: 1.2em;
-
-    width: 100%;
   }
 
   li {
@@ -27,6 +28,10 @@
 
     &:visited { color: $nav-normal; }
     &:hover { color: $nav-normal-hover; }
+  }
+
+  li:hover {
+
   }
 
   li.active {
