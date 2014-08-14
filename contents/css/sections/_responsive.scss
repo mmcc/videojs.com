@@ -1,0 +1,65 @@
+// SCSS port of http://codepen.io/rendro/pen/nbxli
+
+$barBgColor: #ccc !default;
+$barColor: lighten($barBgColor, 20%);
+$barHeight: 24px !default;
+$browserBgColor: white !default;
+$borderRadius: 3px;
+
+.browser{
+  position: relative;
+  width: 300px;
+  min-height: 220px;
+  margin: 30px auto;
+  padding-top: $barHeight;
+  background: linear-gradient(180deg, $barBgColor, $barBgColor $barHeight, $browserBgColor $barHeight, $browserBgColor);
+  border-radius: $borderRadius;
+  box-shadow: 0 0 1px $barColor;
+  box-sizing: border-box;
+  &:after,
+  &:before{
+    font-weight: 300;
+    line-height: 1;
+  }
+  &:before{
+    position: absolute;
+    left: 5px;
+    top: $barHeight/-2 - 3px;
+    content: "\00B7\00B7\00B7";
+    color: $barColor;
+    font-size: 50px;
+    letter-spacing: -2px;
+  }
+  &[data-url]:after{
+    position: absolute;
+    left: 45px;
+    right: 15px;
+    top: 6px;
+    content: attr(data-url);
+    padding: 2px;
+    background: $barColor;
+    font-size: 7px;
+    font-family: 'Verdana';
+    text-align: left;
+    color: #999;
+    border-radius: 1px;
+  }
+
+  // further content styles
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  margin-right: 20px;
+  font: 100 30px 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  padding: 30px 10px;
+  text-align: center;
+  color: #aaa;
+
+  &.image{
+    padding: $barHeight - 1px 0 0;
+    img{
+      display: block;
+      border-radius: 0 0 $borderRadius $borderRadius;
+    }
+  }
+}

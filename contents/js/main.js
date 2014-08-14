@@ -1,4 +1,6 @@
 var $ = require('jquery');
+var videojs = require('video.js');
+var tm = require('./vendor/tweenmax');
 var SM = require('scrollmagic')($, true);
 
 function updateNav(section) {
@@ -6,59 +8,88 @@ function updateNav(section) {
   $('.home-nav li.'+ section).addClass('active');
 }
 
+function resetPlayer() {
+  $('.video-js').removeClass('pink alt-bg large-font');
+}
+
 
 $(function() {
-  var controller = new SM();
+  // We'll need a reference to the video preview pretty mcuh the entire time.
+  var preview = videojs('example-player');
 
-  var scenes = {};
+  var controller = new SM({
+    globalSceneOptions: {
+      triggerHook: "onLeave"
+    }
+  });
 
-  scenes.nav = new ScrollScene({triggerElement: ".home-nav", triggerHook: 0})
-                     .setPin(".home-nav")
-                     .addTo(controller)
-                     .addIndicators();
+  var homeNav = new ScrollScene({triggerElement: ".home-nav"})
+    .setPin(".home-nav")
+    .addTo(controller)
+    .addIndicators();
 
-  scenes.preview = new ScrollScene({triggerElement: ".video-preview", triggerHook: 0})
-                         .setPin(".video-preview")
-                         .addTo(controller)
-                         .addIndicators();
+  var player = new ScrollScene({triggerElement: ".video-preview"})
+    .setPin(".video-preview")
+    .addTo(controller)
+    .addIndicators();
 
-  scenes.customize = new ScrollScene({triggerElement: "#home", triggerHook: 0 })
-                           .addTo(controller)
-                           .on("enter", function(e) {
-                             updateNav('home');
-                           })
-                           .addIndicators();
+  // Now it's time for the actual feature panels!
+  // We need a home panel just for the navigation switcher, but we might add
+  // tween fanciness to it eventually anyway.
+  var home = new ScrollScene({triggerElement: "#home" })
+    .on("enter", function(e) {
+      updateNav('home');
+    })
+    .addTo(controller)
+    .addIndicators();
 
-  scenes.customize = new ScrollScene({triggerElement: "#customize", duration: 500, triggerHook: 0 })
-                           .setPin("#customize")
-                           .addTo(controller)
-                           .on("enter", function(e) {
-                             updateNav('customize');
-                           })
-                           .addIndicators();
+  // Customize
+  var customizeTimeline = new TimelineMax();
+  customizeTimeline.add(TweenMax.to("#customize .color, .vjs-default-skin", 1, {className: "+=pink"}));
+  customizeTimeline.add(TweenMax.to("#customize .bg-color, .vjs-default-skin", 1, {className: "+=alt-bg"}));
+  customizeTimeline.add(TweenMax.to("#customize .size, .vjs-default-skin", 1, {className: "+=large-font"}));
 
-  scenes.responsive = new ScrollScene({triggerElement: "#responsive", duration: 500, triggerHook: 0 })
-                            .setPin("#responsive")
-                            .addTo(controller)
-                            .on("enter", function(e) {
-                              updateNav('responsive');
-                            })
-                            .addIndicators();
+  var customize = new ScrollScene({triggerElement: "#customize", duration: 1000 })
+    .setPin("#customize")
+    .on("enter", function(e) {
+      updateNav('customize');
+    })
+    .on("leave", function(e) {
+      resetPlayer();
+    })
+    .setTween(customizeTimeline)
+    .addTo(controller)
+    .addIndicators();
 
-  scenes.extend = new ScrollScene({triggerElement: "#extend", duration: 500, triggerHook: 0 })
-                        .setPin("#extend")
-                        .addTo(controller)
-                        .on("enter", function(e) {
-                          updateNav('extend');
-                        })
-                        .addIndicators();
+  // Responsive
+  var responsiveTimeline = new TimelineMax();
+  // responsiveTimeline.add(TweenMax.to("#example-player", 1, {className: "+=browser"}));
 
-  scenes.extend = new ScrollScene({triggerElement: "#strengths", duration: 500, triggerHook: 0 })
-                        .setPin("#strengths")
-                        .addTo(controller)
-                        .on("enter", function(e) {
-                          updateNav('strengths');
-                        })
-                        .addIndicators();
+  var responsive = new ScrollScene({triggerElement: "#responsive", duration: 1000 })
+    .setPin("#responsive")
+    .on("enter", function(e) {
+      updateNav('responsive');
+    })
+    .setTween(responsiveTimeline)
+    .addTo(controller)
+    .addIndicators();
+
+  // Extend
+  var extend = new ScrollScene({triggerElement: "#extend", duration: 1000 })
+    .setPin("#extend")
+    .on("enter", function(e) {
+      updateNav('extend');
+    })
+    .addTo(controller)
+    .addIndicators();
+
+  // Strengths
+  var strengths = new ScrollScene({triggerElement: "#strengths", duration: 1000 })
+    .setPin("#strengths")
+    .on("enter", function(e) {
+      updateNav('strengths');
+    })
+    .addTo(controller)
+    .addIndicators();
 
 });

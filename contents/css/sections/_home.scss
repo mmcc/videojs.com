@@ -1,5 +1,10 @@
 #home {
   text-align: center;
   .logo { max-width: 100%; }
-  .tagline { font-size: 1.7em; color: $gray; }
+  .tagline {
+    font-family: $open-sans;
+    font-size: 1.7em;
+    font-weight: 600;
+    color: $gray;
+  }
 }

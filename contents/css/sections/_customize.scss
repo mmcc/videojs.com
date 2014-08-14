@@ -1,0 +1,18 @@
+.pink {
+  .icon, &.video-js { color: $alt-color }
+}
+
+.alt-bg {
+  .icon {
+    background: rgba($alt-bg, 0.7);
+    color: #000;
+  }
+  &.video-js {
+    .vjs-big-play-button, .vjs-control-bar { background: rgba($alt-bg, 0.7); }
+  }
+}
+
+.large-font {
+  .icon { font-size: 115%; }
+  &.video-js { font-size: 12px; }
+}

@@ -1,3 +1,21 @@
 body {
   background-color: #fff;
 }
+
+.icon {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 100px;
+  background-color: $icon-bg;
+  color: $icon-color;
+  @include transition (all 1.0s ease-in-out);
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+
+  li {
+    margin-bottom: 20px;
+  }
+}

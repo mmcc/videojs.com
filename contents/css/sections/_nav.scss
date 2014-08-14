@@ -1,8 +1,10 @@
 .home-nav {
-  font-family: $raleway;
+  font-family: $open-sans;
   font-size: 1.2em;
+  font-weight: 300;
   text-align: center;
   width: 100%;
+  z-index: 100;
   @include background(linear-gradient(rgba($bg, 0.98) 70%, transparent) center repeat);
 
   ul {

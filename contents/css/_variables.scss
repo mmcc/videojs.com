@@ -6,12 +6,24 @@
 
 $blue: #70A7CA;
 $gray: #AAAAAA;
+$light-gray: lighten($gray, 20%);
+$pink: #d32781;
+/* BC colors */
+$bc-green: #387e86;
 
 /* Overall */
-$bg: #fff;
+$bg: white;
+$icon-bg: $blue;
+$icon-color: white;
+
+$alt-color: $pink;
+$alt-bg: $light-gray;
 
 /* Navigation */
 $nav-normal: $gray;
 $nav-active: $blue;
 
 $nav-normal-hover: darken($gray, 20%);
+
+// Path declarations and such
+$font-path: '/font';

@@ -1,9 +1,9 @@
 @import "utilities/reset";
+@import "variables";
 
 @import "foundation";
 @import "vendor/bourbon/bourbon";
 
-@import "variables";
 @import "typography";
 @import "layout";
 
@@ -11,3 +11,7 @@
 @import "sections/primary-nav";
 @import "sections/nav";
 @import "sections/home";
+@import "sections/preview";
+@import "sections/customize";
+@import "sections/responsive";
+@import "sections/scrollmagic-panels";

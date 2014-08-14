@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "jquery": "^2.1.1",
-    "video.js": ">4.0.0",
-    "scrollmagic": "*"
+    "scrollmagic": "*",
+    "video.js": "^4.7.1"
   }
 }

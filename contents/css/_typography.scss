@@ -1,9 +1,8 @@
-$league-gothic: 'League Gothic', 'Helvetica Neue', 'Helvetica', 'Arial';
-.league-gothic { font-family: $league-gothic }
-
-$raleway: 'Raleway', sans-serif;
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600);
+$open-sans: 'Open Sans', sans-serif;
 
 // Headers
 h1, h2, h3, h4, h5, h6 {
-  font-family: $league-gothic;
+  font-family: $open-sans;
+  font-weight: 300;
 }
