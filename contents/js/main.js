@@ -63,7 +63,6 @@ $(function() {
 
   // Responsive
   var responsiveTimeline = new TimelineMax();
-  // responsiveTimeline.add(TweenMax.to("#example-player", 1, {className: "+=browser"}));
 
   var responsive = new ScrollScene({triggerElement: "#responsive", duration: 1000 })
     .setPin("#responsive")

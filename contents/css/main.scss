@@ -3,6 +3,7 @@
 
 @import "foundation";
 @import "vendor/bourbon/bourbon";
+@import "vendor/video-js";
 
 @import "typography";
 @import "layout";
@@ -13,5 +14,4 @@
 @import "sections/home";
 @import "sections/preview";
 @import "sections/customize";
-@import "sections/responsive";
 @import "sections/scrollmagic-panels";
