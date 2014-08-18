@@ -4,7 +4,10 @@ body {
 
 .icon {
   display: inline-block;
-  padding: 4px 11px;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
   border-radius: 100px;
   background-color: $icon-bg;
   color: $icon-color;

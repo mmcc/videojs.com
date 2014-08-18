@@ -30,6 +30,7 @@
               <li class="color"><span class="icon"><i class="fi-text-color"></i></span> Change all text and color with one css color declaration.</li>
               <li class="bg-color"><span class="icon"><i class="fi-paint-bucket"></i></span> Change the background color via...background color.</li>
               <li class="size"><span class="icon"><i class="fi-magnifying-glass"></i></span> Easily increase the theme size.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -38,7 +39,10 @@
         <div class="feature">
           <div class="content">
             <h3>Responsive</h3>
-            <p>It's responsive! Do it!</p>
+            <ul>
+              <li class="desktop"><span class="icon"><i class="fi-monitor"></i></span> Take the guesswork out of supporting modern browsers.</li>
+              <li class="mobile"><span class="icon"><i class="fi-mobile"></i></span> Looks great on mobile platforms.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -65,13 +69,15 @@
 
     <div class="video-preview right-col">
       <div class="content">
-        <video id="example-player" class="video-js vjs-default-skin" controls
-          preload="auto" width="100%" height="198" poster="/img/poster.jpg"
-          data-setup="{}">
-          <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-          <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-          <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-        </video>
+        <div class="video-wrapper">
+          <video id="example-player" class="video-js vjs-default-skin" controls
+            preload="auto" width="100%" height="198" poster="/img/poster.jpg"
+            data-setup="{}">
+            <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+            <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+          </video>
+        </div>
       </div>
     </div>
   </section>
