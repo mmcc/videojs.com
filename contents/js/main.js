@@ -67,10 +67,10 @@ $(function() {
     TweenMax.to("#responsive .desktop", 1, {opacity: 1}),
     TweenMax.to(".video-preview .video-wrapper", 1, {className: "+=desktop-browser"})
   ]);
-  responsiveTimeline.add([
-    TweenMax.to("#responsive .mobile", 1, {opacity: 1}),
-    TweenMax.to(".video-preview .video-wrapper", 1, {className: "+=desktop-browser"})
-  ]);
+  // responsiveTimeline.add([
+  //   TweenMax.to("#responsive .mobile", 1, {opacity: 1}),
+  //   TweenMax.to(".video-preview .video-wrapper", 1, {className: "+=desktop-browser"})
+  // ]);
 
   var responsive = new ScrollScene({triggerElement: "#responsive", duration: 1000 })
     .setPin("#responsive")

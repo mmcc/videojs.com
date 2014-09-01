@@ -17,6 +17,7 @@ $borderRadius: 3px;
   margin: 0 auto;
   padding-top: $barHeight;
   background: $barBgColor;
+  border: 1px solid $barBgColor;
   border-radius: $borderRadius;
   box-shadow: 0 0 1px $barColor;
   box-sizing: border-box;
@@ -25,20 +26,25 @@ $borderRadius: 3px;
     font-weight: 300;
     line-height: 1;
   }
+
+  // OS Circles in the top left;
   &:before{
     position: absolute;
     left: 5px;
     top: $barHeight/-2 - 3px;
     content: "\00B7\00B7\00B7";
-    color: $barColor;
+    color: darken($barBgColor, 20%);
     font-size: 50px;
     letter-spacing: -2px;
   }
+
+  // URL bar
   &[data-url]:after{
+    z-index: 5;
     position: absolute;
     left: 45px;
     right: 15px;
-    top: 6px;
+    top: 7px;
     content: attr(data-url);
     padding: 2px;
     background: $barColor;
