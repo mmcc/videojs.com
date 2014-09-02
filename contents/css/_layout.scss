@@ -28,22 +28,18 @@ section#features {
   width: 100%;
   height: 100%;
 
-  .left-col { height: 100%; }
+  .left-col, .right-col { height: 100%; }
 
   .feature {
     height: 100%;
     width: 100%;
     display: table;
   }
-}
 
-.video-preview {
-  @include grid-column(6);
-
-  position: relative;
-  display: table;
-
-  height: 100%;
+  .video-preview {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .left-col { @include grid-column(6); }
@@ -51,3 +47,5 @@ section#features {
 .full-col { @include grid-column(12); }
 
 .hidden { opacity: 0; }
+img.inline { max-height: 30px; }
+img.full-width { max-width: 100%; }
