@@ -6,11 +6,11 @@
       <div class="home-nav">
         <div class="nav-list">
           <ul>
-            <li class="home active"><a href="#">home</a></li>
-            <li class="customize"><a href="#">customize</a></li>
-            <li class="responsive"><a href="#">responsive</a></li>
-            <li class="extend"><a href="#">extend</a></li>
-            <li class="strengths"><a href="#">strengths</a></li>
+            <li class="home active"><a href="#home">home</a></li>
+            <li class="customize"><a href="#customize">customize</a></li>
+            <li class="responsive"><a href="#responsive">responsive</a></li>
+            <li class="extend"><a href="#extend">extend</a></li>
+            <li class="strengths"><a href="#strengths">strengths</a></li>
           </ul>
         </div>
       </div>
@@ -51,8 +51,21 @@
         <div class="feature">
           <div class="content">
             <h3>Extend</h3>
-            <p>Extend stuff!</p>
-            <p>Plugins are neato fajito</p>
+            <p>
+              Thanks to a thriving plugin ecosystem, there are plenty of <a href="https://github.com/videojs/video.js/wiki/Plugins">plugins</a>
+              available for Video.js right now to create even more customized video experiences. What do you need?
+            </p>
+
+            <ul>
+              <li class="techs hidden">
+                <span class="icon"><i class="fi-social-youtube"></i></span>
+                Entirely different playback technologies, like YouTube.
+              </li>
+              <li class="custom hidden">
+                <span class="icon"><i class="fi-puzzle"></i></span>
+                Nothing available? <a href="https://github.com/videojs/video.js/blob/stable/docs/guides/plugins.md">Building your own</a> is a snap.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -61,7 +74,16 @@
         <div class="feature">
           <div class="content">
             <h3>Strengths</h3>
-            <p>It's got a lot of cool things that we consider strengths.</p>
+            <ul>
+              <li class="bulb hidden">
+                <span class="icon"><i class="fi-lightbulb"></i></span>
+                This is a temporary placeholder for 5.0 strengths
+              </li>
+              <li class="access hidden">
+                <span class="icon"><i class="fi-universal-access"></i></span>
+                Accessibility and such? Roll to the credits for now...
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -71,8 +93,7 @@
       <div class="content">
         <div class="video-wrapper" data-url="http://videojs.com">
           <video id="example-player" class="video-js vjs-default-skin" controls
-            preload="auto" width="100%" height="198" poster="/img/poster.jpg"
-            data-setup="{}">
+            preload="auto" width="100%" height="198" poster="/img/poster.jpg">
             <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
             <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
             <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>

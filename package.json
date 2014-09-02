@@ -29,6 +29,7 @@
   "dependencies": {
     "jquery": "^2.1.1",
     "scrollmagic": "*",
-    "video.js": "^4.7.1"
+    "video.js": "^4.7.1",
+    "videojs-youtube": "^1.2.5"
   }
 }

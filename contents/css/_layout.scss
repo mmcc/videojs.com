@@ -10,6 +10,7 @@ html, body { height: 100%; }
   margin: 0 auto;
   position: relative;
   width: 100%;
+  max-width: 100%;
   display: table-cell;
   vertical-align: middle;
 }
@@ -47,5 +48,6 @@ section#features {
 
 .left-col { @include grid-column(6); }
 .right-col { @include grid-column(6); }
+.full-col { @include grid-column(12); }
 
-.awesome { font-weight: bold; color: #0000ff; }
+.hidden { opacity: 0; }

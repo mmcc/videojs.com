@@ -1,7 +1,13 @@
-var $ = require('jquery');
-var videojs = require('video.js');
-var tm = require('./vendor/tweenmax');
-var SM = require('scrollmagic')($, true);
+var $          = require('jquery');
+var videojs    = require('video.js');
+var prism      = require('./vendor/prism');
+var tm         = require('./vendor/tweenmax');
+var SM         = require('scrollmagic')($, true);
+
+// Stuff that isn't playing nice with Browserify
+// Until we get Foundation playing nice with browserify, export jQuery as a global.
+window.jQuery = $;
+// var vjsYoutube = require('./vendor/vjs-youtube');
 
 function updateNav(section) {
   $('.home-nav li.active').removeClass('active');
@@ -11,7 +17,7 @@ function updateNav(section) {
 
 $(function() {
   // We'll need a reference to the video preview pretty mcuh the entire time.
-  var preview = videojs('example-player');
+  var preview = videojs('example-player', { techOrder: ['youtube', 'html5', 'flash']});
 
   var controller = new SM({
     globalSceneOptions: {
@@ -24,7 +30,7 @@ $(function() {
     .addTo(controller)
     .addIndicators();
 
-  var player = new ScrollScene({triggerElement: ".video-preview"})
+  var playerScene = new ScrollScene({triggerElement: ".video-preview"})
     .setPin(".video-preview")
     .addTo(controller)
     .addIndicators();
@@ -83,11 +89,29 @@ $(function() {
     .addTo(controller)
     .addIndicators();
 
-  var extendTimeline = new TimelineMax();
-
-
   // Extend
-  var extend = new ScrollScene({triggerElement: "#extend", duration: 1000 })
+  function addYoutubeSrc() {
+    preview.src({ src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', type: 'video/youtube' });
+    preview.volume(0); // If we're going to autoplay, let's at least be nice about it :)
+    preview.play();
+
+    // if someone hasn't paused by now, do it for them
+    setTimeout(function() {
+      preview.pause();
+    }, 5000);
+  }
+  function removeYoutubeSrc() {
+    preview.src([
+      { src: 'http://vjs.zencdn.net/v/oceans.mp4', type: 'video/mp4'},
+      { src: 'http://vjs.zencdn.net/v/oceans.webm', type: 'video/webm'}
+    ]);
+  }
+
+  var extendTimeline = new TimelineMax();
+  extendTimeline.add(TweenMax.to("#extend .techs", 1, {opacity: 1, onStart: addYoutubeSrc, onReverseComplete: removeYoutubeSrc}));
+  extendTimeline.add(TweenMax.to("#extend .custom", 1, {opacity: 1}));
+
+  var extend = new ScrollScene({triggerElement: "#extend", duration: 2000 })
     .setPin("#extend")
     .on("enter", function(e) {
       updateNav('extend');
@@ -97,12 +121,17 @@ $(function() {
     .addIndicators();
 
   // Strengths
+  var strengthsTimeline = new TimelineMax();
+  strengthsTimeline.add(TweenMax.to("#strengths .bulb", 1, {opacity: 1}));
+  strengthsTimeline.add(TweenMax.to("#strengths .access", 1, {opacity: 1}));
+  strengthsTimeline.add(function() { playerScene.removePin(); });
+
   var strengths = new ScrollScene({triggerElement: "#strengths", duration: 1000 })
     .setPin("#strengths")
     .on("enter", function(e) {
       updateNav('strengths');
     })
+    .setTween(strengthsTimeline)
     .addTo(controller)
     .addIndicators();
-
 });
