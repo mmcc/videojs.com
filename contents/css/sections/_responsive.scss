@@ -10,7 +10,7 @@ $barHeight: 24px !default;
 $browserBgColor: white !default;
 $borderRadius: 3px;
 
-.desktop-browser{
+.desktop-browser {
   position: relative;
   width: 100%;
   min-height: 220px;
@@ -28,7 +28,7 @@ $borderRadius: 3px;
   }
 
   // OS Circles in the top left;
-  &:before{
+  &:before {
     position: absolute;
     left: 5px;
     top: $barHeight/-2 - 3px;
@@ -39,7 +39,7 @@ $borderRadius: 3px;
   }
 
   // URL bar
-  &[data-url]:after{
+  &[data-url]:after {
     z-index: 5;
     position: absolute;
     left: 45px;
@@ -63,67 +63,51 @@ $borderRadius: 3px;
   text-align: center;
   color: #aaa;
 
-  &.image{
+  &.image {
     padding: $barHeight - 1px 0 0;
-    img{
-      display: block;
-      border-radius: 0 0 $borderRadius $borderRadius;
-    }
+    img { display: block; border-radius: 0 0 $borderRadius $borderRadius; }
   }
+
+  // We also need to clear out the shadow on the player itself
+  #example-player { box-shadow: none; }
 }
 
-.mobile-browser{
-  position: relative;
-  width: 100%;
-  min-height: 220px;
-  margin: 0 auto;
-  padding-top: $barHeight;
-  background: $barBgColor;
-  border-radius: $borderRadius;
-  box-shadow: 0 0 1px $barColor;
-  box-sizing: border-box;
-  &:after,
-  &:before{
-    font-weight: 300;
-    line-height: 1;
-  }
-  &:before{
+$deviceBase: #808080;
+
+.mobile-device {
+	width: 100%;
+	padding: 3% 11%;
+  background: darken($deviceBase, 14%);
+  border: 4px solid darken($deviceBase, 24%);
+  border-radius: 1.5em;
+
+  &:before {
+    content: '';
+    display: block;
     position: absolute;
-    left: 5px;
-    top: $barHeight/-2 - 3px;
-    content: "\00B7\00B7\00B7";
-    color: $barColor;
-    font-size: 50px;
-    letter-spacing: -2px;
+    top: 45%;
+    left: 25px;
+    height: 10%;
+    min-width: 8px;
+    background-color: darken($deviceBase, 24%);
+    border-radius: 1em;
   }
-  &[data-url]:after{
+
+  &:after {
+    content: '\25A2';
+    font-size: 0.7em;
+    display: block;
     position: absolute;
-    left: 45px;
+    top: 50%;
     right: 15px;
-    top: 6px;
-    content: attr(data-url);
-    padding: 2px;
-    background: $barColor;
-    font-size: 7px;
-    font-family: 'Verdana';
-    text-align: left;
-    color: #999;
-    border-radius: 1px;
+    margin-top: -15px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+    border-radius: 15px;
+    border: 1px solid darken($deviceBase, 24%);
   }
 
-  // further content styles
-  display: inline-block;
-  vertical-align: top;
-  font: 100 30px 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  padding: 30px 10px;
-  text-align: center;
-  color: #aaa;
-
-  &.image{
-    padding: $barHeight - 1px 0 0;
-    img{
-      display: block;
-      border-radius: 0 0 $borderRadius $borderRadius;
-    }
-  }
+  #example-player { box-shadow: none; }
 }

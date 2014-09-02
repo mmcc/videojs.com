@@ -8,10 +8,6 @@ function updateNav(section) {
   $('.home-nav li.'+ section).addClass('active');
 }
 
-function resetPlayer() {
-  $('.video-js').removeClass('pink alt-bg large-font');
-}
-
 
 $(function() {
   // We'll need a reference to the video preview pretty mcuh the entire time.
@@ -49,13 +45,15 @@ $(function() {
   customizeTimeline.add(TweenMax.to("#customize .bg-color, .vjs-default-skin", 1, {className: "+=alt-bg"}));
   customizeTimeline.add(TweenMax.to("#customize .size, .vjs-default-skin", 1, {className: "+=large-font"}));
 
-  var customize = new ScrollScene({triggerElement: "#customize", duration: 1000 })
+  // Tear everything down
+  customizeTimeline.add(TweenMax.to("#customize .size, .vjs-default-skin", 0.2, {className: "-=large-font"}), "+=2");
+  customizeTimeline.add(TweenMax.to("#customize .size, .vjs-default-skin", 0.2, {className: "-=alt-bg"}));
+  customizeTimeline.add(TweenMax.to("#customize .size, .vjs-default-skin", 0.2, {className: "-=pink"}));
+
+  var customize = new ScrollScene({triggerElement: "#customize", duration: 3000 })
     .setPin("#customize")
     .on("enter", function(e) {
       updateNav('customize');
-    })
-    .on("leave", function(e) {
-      resetPlayer();
     })
     .setTween(customizeTimeline)
     .addTo(controller)
@@ -67,12 +65,16 @@ $(function() {
     TweenMax.to("#responsive .desktop", 1, {opacity: 1}),
     TweenMax.to(".video-preview .video-wrapper", 1, {className: "+=desktop-browser"})
   ]);
-  // responsiveTimeline.add([
-  //   TweenMax.to("#responsive .mobile", 1, {opacity: 1}),
-  //   TweenMax.to(".video-preview .video-wrapper", 1, {className: "+=desktop-browser"})
-  // ]);
+  // Quickly remove the browser class so we can add the mobile styles
+  responsiveTimeline.add(TweenMax.to(".video-wrapper", 0.5, {className: "-=desktop-browser"}), "+=2");
+  responsiveTimeline.add([
+    TweenMax.to("#responsive .mobile", 1, {opacity: 1}),
+    TweenMax.to(".video-preview .video-wrapper", 1, {className: "+=mobile-device"})
+  ]);
+  // Tear down the mobile styles so we can get back to normal
+  responsiveTimeline.add(TweenMax.to(".video-wrapper", 0.5, {className: "-=mobile-device"}), "+=2");
 
-  var responsive = new ScrollScene({triggerElement: "#responsive", duration: 1000 })
+  var responsive = new ScrollScene({triggerElement: "#responsive", duration: 3000 })
     .setPin("#responsive")
     .on("enter", function(e) {
       updateNav('responsive');
@@ -81,12 +83,16 @@ $(function() {
     .addTo(controller)
     .addIndicators();
 
+  var extendTimeline = new TimelineMax();
+
+
   // Extend
   var extend = new ScrollScene({triggerElement: "#extend", duration: 1000 })
     .setPin("#extend")
     .on("enter", function(e) {
       updateNav('extend');
     })
+    .setTween(extendTimeline)
     .addTo(controller)
     .addIndicators();
 
